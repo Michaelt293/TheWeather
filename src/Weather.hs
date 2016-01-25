@@ -19,7 +19,7 @@ instance Show Temperature where
                 else showFFloat (Just 1) temperature  ""
         where temperature = temp x
 
-newtype Pressure = HectoPascal {pressure :: Double} deriving (Eq, Ord, Read)
+newtype Pressure = HectoPascal {pressure :: Double} deriving (Num, Eq, Ord, Read)
 
 instance Show Pressure where
     show x = showFFloat (Just 1) (pressure x) ""

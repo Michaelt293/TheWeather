@@ -14,7 +14,7 @@ data City = Sydney
           | Canberra
           | Cairns
           | Dubbo
-          deriving (Eq, Read)
+          deriving (Eq, Read, Enum, Bounded)
 
 instance Show City where
     show Sydney       = "Sydney"
@@ -40,7 +40,7 @@ data IataCode = SYD
               | CBR
               | CNS
               | DBO
-              deriving (Show, Eq, Read)
+              deriving (Show, Eq, Read, Enum, Bounded)
 
 iataCode :: City -> IataCode
 iataCode city = case city of
@@ -106,6 +106,8 @@ elevation city = case city of
                       Dubbo        -> 312
 
 data Location = Location Coordinate Elevation deriving (Eq, Ord)
+
+location city = Location (coordinate city) (elevation city)
 
 instance Show Location where
     show (Location c e) = show c ++ "," ++ show e

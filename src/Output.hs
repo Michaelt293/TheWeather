@@ -5,6 +5,7 @@ import Weather
 import Data.Time
 import Data.List
 
+renderUTCTime :: UTCTime -> [Char]
 renderUTCTime t = show (utctDay t) ++ "T" ++ clockTime ++ "Z"
     where totalSeconds = round $ utctDayTime t
           hours = totalSeconds `div` 3600
@@ -17,4 +18,4 @@ data WeatherData = WeatherData IataCode Location UTCTime Condition Temperature P
 
 instance Show WeatherData where
     show (WeatherData i l u c t p h) =
-        intercalate "|" [show i, show l, show u, show c, show t, show p, show h]
+        intercalate "|" [show i, show l, renderUTCTime u, show c, show t, show p, show h]
