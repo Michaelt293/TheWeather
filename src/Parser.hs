@@ -48,6 +48,7 @@ type Sec = Double
 
 data ParsedTime = ParsedTime Day Hr Min Sec deriving (Show, Eq, Ord)
 
+{-
 timeP = do
     date <- takeWhile (\x -> x /= 'T')
     char 'T'
@@ -59,8 +60,8 @@ timeP = do
     char 'Z'
     return $ ParsedTime (read date :: Day) (read hr :: Hr) (read min :: Min) (read sec :: Sec)
 
---totalSec = show $ read hr * 3600 + read min * 60 + read sec
-
+totalSec = show $ read hr * 3600 + read min * 60 + read sec
+-}
 
 
 temperatureP = Celsius <$> float
